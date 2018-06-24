@@ -1,0 +1,19 @@
+---
+
+- name: Add www-data to shadow group
+  user:
+    append: yes
+    name: "www-data"
+    groups: shadow
+  tags: nginx_auth
+
+- name: Configure pam authentication
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/pam.d/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: 0755
+  with_items:
+    - nginx
+  tags: nginx_auth

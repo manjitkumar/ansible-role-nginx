@@ -2,6 +2,9 @@
 nginx_pkgs:
   - nginx
 
+# flag for pam auth
+nginx_add_pam_auth: False
+
 nginx_install_epel_repo: True
 
 nginx_official_repo: False
